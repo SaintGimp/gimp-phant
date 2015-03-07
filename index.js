@@ -3,12 +3,14 @@
 var Phant = require('phant'),
     app = Phant();
 
-Phant.HttpServer.listen(80);
+var listenPort = process.env.PORT || 3000;
+Phant.HttpServer.listen(listenPort);
 
 // METADATA
 // ========
+var metaDatabaseUri = process.env.META_URI || 'mongodb://localhost/phant';
 var meta = require('phant-meta-mongodb')({
-  url: 'mongodb://localhost/phant'
+  url: metaDatabaseUri
 });
 
 var validator = Phant.Validator({
@@ -19,15 +21,16 @@ var validator = Phant.Validator({
 // ========
 var keychain = require('phant-keychain-hex')({
   keyLength: 12,
-  publicSalt: 'mlkjasdifasdfmnsadf',
-  privateSalt: 'oiuoawnefmnasdfs',
-  deleteSalt: 'twermdfhsdflksjdfj'
+  publicSalt: process.env.PUBLIC_SALT || 'default',
+  privateSalt: process.env.PRIVATE_SALT || 'default',
+  deleteSalt: process.env.DELETE_SALT || 'default'
 });
 
 // STORAGE
 // =======
+var storageDatabaseUri = process.env.STORAGE_URI || 'mongodb://localhost/phant';
 var stream = require('phant-stream-mongodb')({
-  url: 'mongodb://localhost/phant',
+  url: storageDatabaseUri,
   cap: 0,
   pageSize: 1000
 });
