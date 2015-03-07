@@ -6,7 +6,7 @@
   "bin": "./index.js",
   "dependencies": {
     "phant": "^6.8.0",
-"phant-stream-mongodb": "^2.1.4",
+"phant-stream-mongodb": "SaintGimp/phant-stream-mongodb",
 "phant-manager-http": "^4.5.10",
 "phant-meta-mongodb": "^2.2.1",
 "phant-keychain-hex": "^1.0.0"
