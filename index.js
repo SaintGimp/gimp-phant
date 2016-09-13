@@ -6,11 +6,13 @@ var Phant = require('phant'),
 var listenPort = process.env.PORT || 3000;
 Phant.HttpServer.listen(listenPort);
 
+const path = require('path');
+var dataDirectory = path.join(process.env.HOME, "site", "wwwroot", "App_Data");
+
 // METADATA
 // ========
-var metaDatabaseUri = process.env.META_URI || 'mongodb://localhost/phant';
-var meta = require('phant-meta-mongodb')({
-  url: metaDatabaseUri
+var meta = require('phant-meta-json')({
+  directory: dataDirectory
 });
 
 var validator = Phant.Validator({
@@ -28,10 +30,10 @@ var keychain = require('phant-keychain-hex')({
 
 // STORAGE
 // =======
-var storageDatabaseUri = process.env.STORAGE_URI || 'mongodb://localhost/phant';
-var stream = require('phant-stream-mongodb')({
-  url: storageDatabaseUri,
-  cap: 0,
+var stream = require('phant-stream-json')({
+  directory: dataDirectory,
+  cap: null,
+  chunk: 25 * 1024 * 1024, // 25 MB file chunks
   pageSize: 1000
 });
 
