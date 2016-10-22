@@ -6,13 +6,17 @@
   "bin": "./index.js",
   "dependencies": {
     "phant": "^6.8.0",
-"phant-stream-json": "^2.1.1",
-"phant-manager-http": "^4.5.10",
-"phant-meta-json": "^2.1.3",
-"phant-keychain-hex": "^1.0.0"
-},
+    "phant-stream-json": "^2.1.1",
+    "phant-manager-http": "^4.5.10",
+    "phant-meta-json": "^2.1.3",
+    "phant-keychain-hex": "^1.0.0"
+  },
   "scripts": {
     "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=4.6.1 <5.0.0",
+    "npm": ">=2.15.9 <3.0.0"
   },
   "keywords": [
     "phant",
