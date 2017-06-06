@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "./index.js",
   "dependencies": {
-    "phant": "^6.8.0",
+    "phant": "saintgimp/phant",
     "phant-stream-json": "^2.1.1",
     "phant-manager-http": "sparkfun/phant-manager-http#e504bae7b14",
     "phant-meta-json": "^2.1.3",
